@@ -32,8 +32,11 @@ int main() {
 			if (product > max) max = product;
 			product = val(i, j)*val(i+1, j+1)*val(i+2, j+2)*val(i+3, j+3);
 			if (product > max) max = product;
+			product = val(i, j)*val(i+1, j-1)*val(i+2, j-2)*val(i+3, j-3);
+			if (product > max) max = product;
 		}
 	}
+	cout << grid[19][0] << endl;
 	cout << max << endl;
 
 }
