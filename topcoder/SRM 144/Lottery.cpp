@@ -19,7 +19,7 @@ class Lottery {
         for (int i = 1; i <= 8; i++) {
             sum *= (93 + i);
         }
-        cout << sum;
+        cout << sum << endl;
         return vector<string>();
     }
 };
