@@ -1,23 +1,38 @@
 #include <iostream>
-#include <cmath>
-
+#include <map>
 using namespace std;
 
 int main() {
-	int max, n, size, last;
+	int size, n;
 	cin >> size;
-	unsigned long sum = 0;
+	int** arr = new int*[size];
+	for (int i = 0; i < size; i++) arr[i] = new int[size];
+	/* Input -> array */
 	for (int i = 0; i < size; i++) {
-		max = 0;
-		for (int j = 0; j < i + 1; j++) {
-			cin >> n;
-			if (j == last || j == last + 1 && n > max) {
-				max = n;
-				last = j;
-			}
+		for (int j = 0 ; j <= i; j++) {
+			cin >> arr[i][j];
 		}
-		cout << last << endl;
-		sum += max;
 	}
-	cout << sum << endl;
+
+	int max;
+	for (int i = size-1; i > 0; i--) {
+		for (int j = 0; j <= i; j++) {
+			int n = arr[i][j]+arr[i-1][j];
+			if (max < n) max = n; 
+			if (j < size-1) {
+				n = arr[i][j+1]+arr[i-1][j];
+				if (max < n) max = n;
+			}
+			arr[i-1][j] = max;
+			max = 0;
+		}
+	}
+
+	// for (int i = 0; i < size; i++) {
+	// 	for (int j = 0 ; j <= i; j++) {
+	// 		cout << arr[i][j] << " ";
+	// 	}
+	// 	cout << endl;
+	// }
+	cout << arr[0][0] << endl;
 }
