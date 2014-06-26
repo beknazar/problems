@@ -1,0 +1,5 @@
+#!/bin/bash
+
+for a in p[0-9]*.cpp; do
+    mv $a `printf %03d.%s ${a%.*} ${a##*.}`
+done
